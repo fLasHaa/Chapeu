@@ -12,6 +12,8 @@ public class HatController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+ 
+
         if (cam == null)
         {
             cam = Camera.main;

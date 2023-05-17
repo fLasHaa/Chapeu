@@ -48,6 +48,9 @@ public class GameController : MonoBehaviour
         StartButton.SetActive(false);
         hc.MudaEstado(true);
         playing = true;
+        //Rato invisivel
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
         StartCoroutine(Spawn());
     }
 
@@ -60,11 +63,13 @@ public class GameController : MonoBehaviour
                 GameObject bola = bolas[Random.Range(0, bolas.Length)];
 
             Instantiate(bola, spawnPosition, Quaternion.identity);
-            yield return new WaitForSeconds(0.5f); // AS BOMBAS SÓ DEVEM EXPLODIR QUANDO TOCAM NO CHAPEU!
+            yield return new WaitForSeconds(1.0f); // AS BOMBAS SÓ DEVEM EXPLODIR QUANDO TOCAM NO CHAPEU!
         }
         txtGameOver.SetActive(true);
         hc.MudaEstado(false);
         RestartButton.SetActive(true);
+
+        Cursor.visible = true;
     }
     
     void Update()
