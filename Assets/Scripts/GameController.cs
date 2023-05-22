@@ -70,6 +70,7 @@ public class GameController : MonoBehaviour
         RestartButton.SetActive(true);
 
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
     
     void Update()
