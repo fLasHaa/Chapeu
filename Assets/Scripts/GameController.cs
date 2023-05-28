@@ -17,10 +17,14 @@ public class GameController : MonoBehaviour
     public GameObject RestartButton;
     private bool playing;
     public Score score;
+    private int nVidas;
+    public GameObject[] vidas;
+
 
 
     void Start()
     {
+        
         playing = false;
         if (cam == null) cam = Camera.main;
         Vector3 UpperC = new Vector3(Screen.width, Screen.height, 0.0f);
@@ -44,6 +48,8 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
+        nVidas = 2;
+        updateVidas(0);
         SplashImage.SetActive(false);
         StartButton.SetActive(false);
         hc.MudaEstado(true);
@@ -83,6 +89,23 @@ public class GameController : MonoBehaviour
                 txtTimeLeft.text = "Time Left: \n" + Mathf.RoundToInt(timeLeft);
             }
         }
+
+    }
+
+    public void updateVidas(int value)
+    {
+        nVidas += value;
+
+        if (nVidas > 3) nVidas = 3;
+
+        if (nVidas == 0) nVidas = 0;
+
+        for (int i=0; i < vidas.Length; i++)
+        {
+            vidas[i].SetActive(i<nVidas);
+        }
+
+
     }
 
 }
