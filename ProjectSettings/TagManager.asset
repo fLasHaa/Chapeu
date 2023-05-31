@@ -8,6 +8,7 @@ TagManager:
   - Bomba
   - Morte
   - Health
+  - Clock
   layers:
   - Default
   - TransparentFX

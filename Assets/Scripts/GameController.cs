@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
     public GameObject RestartButton;
     private bool playing;
     public Score score;
-    private int nVidas;
+    public int nVidas;
     public GameObject[] vidas;
 
 
@@ -39,7 +39,7 @@ public class GameController : MonoBehaviour
 
     public void RestartGame()
     {
-        timeLeft = 20.0f;
+        timeLeft = 30.0f;
         txtGameOver.SetActive(false);
         RestartButton.SetActive(false);
         score.Reset();
@@ -48,7 +48,7 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
-        nVidas = 2;
+        nVidas = 3;
         updateVidas(0);
         SplashImage.SetActive(false);
         StartButton.SetActive(false);
@@ -62,7 +62,7 @@ public class GameController : MonoBehaviour
 
     IEnumerator Spawn()
     {
-        while(timeLeft > 0)
+        while(timeLeft > 0 && nVidas > 0)
         {
             Vector3 spawnPosition = 
                 new Vector3(Random.Range(-MaxWidth, MaxWidth), transform.position.y, 0.0f);
@@ -83,7 +83,7 @@ public class GameController : MonoBehaviour
     {
         if (playing)
         {
-            if (timeLeft > 0)
+            if (timeLeft > 0 && nVidas > 0)
             {
                 timeLeft -= Time.deltaTime;
                 txtTimeLeft.text = "Time Left: \n" + Mathf.RoundToInt(timeLeft);
@@ -98,13 +98,17 @@ public class GameController : MonoBehaviour
 
         if (nVidas > 3) nVidas = 3;
 
-        if (nVidas == 0) nVidas = 0;
+        if (nVidas <= 0) nVidas = 0;
 
         for (int i=0; i < vidas.Length; i++)
         {
             vidas[i].SetActive(i<nVidas);
         }
+    }
 
+    public void bonusTempo(int value)
+    {
+        timeLeft = timeLeft + value;
 
     }
 

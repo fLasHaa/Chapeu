@@ -8,6 +8,9 @@ public class Score : MonoBehaviour
     private int score;
     public Text txtScore;
 
+    public GameController gc;
+
+
 
 
     void Start()
@@ -15,31 +18,42 @@ public class Score : MonoBehaviour
         score = 0;
     }
 
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Bomba")
+        {
+            score = score - 5;
+            txtScore.text = "Score: \n" + score;
+            if (score < 0) score = 0;
+
+            gc.updateVidas(-1);
+        }
+
+    }
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "Clock")
+        {
+            gc.bonusTempo(10);
+        }
+
+        if (collision.gameObject.tag == "Morte")
+        {
+            gc.updateVidas(-3);
+
+        }
+
         if (collision.gameObject.CompareTag("Bola"))
         {
             score++;
             txtScore.text = "Score: \n" + score;
         }
-    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "Bomba")
+        if (collision.gameObject.CompareTag("Health"))
         {
-            score -= 5;
-            if (score < 0) score = 0;
-
-            updateVidas(-1)
+            gc.updateVidas(1);
         }
-
-        if(collision.gameObject.tag == "Clock")
-        {
-            Destroy(collision.gameObject, 1.0f);
-        }
-
-
     }
 
     public void Reset()

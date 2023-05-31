@@ -409,7 +409,7 @@ GameObject:
   - component: {fileID: 456503272}
   m_Layer: 5
   m_Name: Health1
-  m_TagString: Untagged
+  m_TagString: Health
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -992,7 +992,7 @@ GameObject:
   - component: {fileID: 1192275986}
   m_Layer: 5
   m_Name: Health3
-  m_TagString: Untagged
+  m_TagString: Health
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1319,6 +1319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   txtScore: {fileID: 1284304778}
+  gc: {fileID: 1433047323}
 --- !u!1 &1433047322
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,11 +1351,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bolas:
   - {fileID: 6032867454891087715, guid: cfbb2f0b3836ebc4a8ff08ef790ad40f, type: 3}
+  - {fileID: 6032867454891087715, guid: cfbb2f0b3836ebc4a8ff08ef790ad40f, type: 3}
+  - {fileID: 6032867454891087715, guid: cfbb2f0b3836ebc4a8ff08ef790ad40f, type: 3}
   - {fileID: 6705614181910809174, guid: 58bf5ff0a2e44834d8079cd989243d40, type: 3}
-  - {fileID: 6032867454891087715, guid: cfbb2f0b3836ebc4a8ff08ef790ad40f, type: 3}
-  - {fileID: 6032867454891087715, guid: cfbb2f0b3836ebc4a8ff08ef790ad40f, type: 3}
-  - {fileID: 4681285044033670979, guid: 457eb93da3d59ca4cb3aec4100dfc949, type: 3}
   - {fileID: 8420202356971002838, guid: 3d8ef9b831b333449a3717ed15e55d14, type: 3}
+  - {fileID: 4681285044033670979, guid: 457eb93da3d59ca4cb3aec4100dfc949, type: 3}
+  - {fileID: 7847723295158606965, guid: d2afeeb14ef3e334b8d26dbff032dfcb, type: 3}
   cam: {fileID: 519420031}
   timeLeft: 0
   txtTimeLeft: {fileID: 1950798350}
@@ -1364,6 +1366,7 @@ MonoBehaviour:
   StartButton: {fileID: 115792789}
   RestartButton: {fileID: 1783937483}
   score: {fileID: 1347413800}
+  nVidas: 0
   vidas:
   - {fileID: 456503270}
   - {fileID: 1882719482}
@@ -1681,7 +1684,7 @@ GameObject:
   - component: {fileID: 1882719484}
   m_Layer: 5
   m_Name: Health2
-  m_TagString: Untagged
+  m_TagString: Health
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
