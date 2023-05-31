@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Score : MonoBehaviour
 {
-    private int score;
+    public int score;
     public Text txtScore;
 
     public GameController gc;
-
 
 
 
@@ -19,11 +19,12 @@ public class Score : MonoBehaviour
     }
 
 
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Bomba")
         {
-            score = score - 5;
+            score = score - 2;
             txtScore.text = "Score: \n" + score;
             if (score < 0) score = 0;
 
@@ -35,7 +36,7 @@ public class Score : MonoBehaviour
     {
         if (collision.gameObject.tag == "Clock")
         {
-            gc.bonusTempo(10);
+            gc.bonusTempo(5);
         }
 
         if (collision.gameObject.tag == "Morte")

@@ -1318,6 +1318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932065e4e1646234ea805a25b38a5f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
   txtScore: {fileID: 1284304778}
   gc: {fileID: 1433047323}
 --- !u!1 &1433047322
@@ -1365,12 +1366,14 @@ MonoBehaviour:
   SplashImage: {fileID: 1191998684}
   StartButton: {fileID: 115792789}
   RestartButton: {fileID: 1783937483}
-  score: {fileID: 1347413800}
+  sc: {fileID: 1347413800}
   nVidas: 0
   vidas:
   - {fileID: 456503270}
   - {fileID: 1882719482}
   - {fileID: 1192275984}
+  SceneName: Cena 2
+  scoreAdv: 2
 --- !u!4 &1433047324
 Transform:
   m_ObjectHideFlags: 0

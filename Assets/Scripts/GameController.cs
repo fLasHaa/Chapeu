@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -16,10 +17,12 @@ public class GameController : MonoBehaviour
     public GameObject StartButton;
     public GameObject RestartButton;
     private bool playing;
-    public Score score;
+    public Score sc;
     public int nVidas;
     public GameObject[] vidas;
+    public string SceneName;
 
+    public int scoreAdv = 2;
 
 
     void Start()
@@ -34,7 +37,15 @@ public class GameController : MonoBehaviour
         txtGameOver.SetActive(false);
         hc.MudaEstado(false);
         RestartButton.SetActive(false);
-    
+
+        int CurrentScene = SceneManager.GetActiveScene().buildIndex;
+        
+        Debug.Log(CurrentScene);
+
+        if (SceneManager.GetActiveScene().name == "Cena 2")
+        {
+            StartGame();
+        }
     }
 
     public void RestartGame()
@@ -42,12 +53,14 @@ public class GameController : MonoBehaviour
         timeLeft = 30.0f;
         txtGameOver.SetActive(false);
         RestartButton.SetActive(false);
-        score.Reset();
+        sc.Reset();
         StartGame();
     }
 
     public void StartGame()
     {
+        
+
         nVidas = 3;
         updateVidas(0);
         SplashImage.SetActive(false);
@@ -58,6 +71,8 @@ public class GameController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
         StartCoroutine(Spawn());
+
+        
     }
 
     IEnumerator Spawn()
@@ -88,6 +103,12 @@ public class GameController : MonoBehaviour
                 timeLeft -= Time.deltaTime;
                 txtTimeLeft.text = "Time Left: \n" + Mathf.RoundToInt(timeLeft);
             }
+        }
+
+
+        if(sc.score >= scoreAdv)
+        {
+            SceneManager.LoadScene(SceneName, LoadSceneMode.Single);
         }
 
     }
